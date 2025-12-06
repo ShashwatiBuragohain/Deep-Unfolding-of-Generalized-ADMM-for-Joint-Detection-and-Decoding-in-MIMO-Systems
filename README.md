@@ -87,8 +87,11 @@ This multi-resolution structure makes the updates extremely effective for discre
 We turn each iteration into a learnable layer:
 
 Layer 1 → update (x0, xq, dual variables)
+
 Layer 2 → update again but with different ρ2, α2
+
 ...
+
 Layer L → final refined estimate
 
 
