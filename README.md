@@ -2,13 +2,19 @@
 Because classical algorithms are smart… but making them learn? That’s genius.”
 
 Modern wireless systems (5G, Wi-Fi 7, Massive MIMO, etc.) transmit data using dozens of antennas simultaneously.
+
 More antennas = faster speeds;but also extremely hard detection problem at the receiver.
+
 The base station receives a messy mixture:
+
            y = Hx + n
 
 where:
+
 x = transmitted QAM symbols
+
 H = channel matrix
+
 y = noisy received signal
 
 Our job is to recover x from y with near-ML accuracy but without ML-level complexity. That’s where this project comes in.
@@ -72,8 +78,9 @@ Higher bit-planes (MSB) get bigger denominators → move more carefully.
 Lower bit-planes (LSB) move faster.
 
 This multi-resolution structure makes the updates extremely effective for discrete QAM optimization.
-<img src="https://github.com/user-attachments/assets/2307a1c6-2802-40c3-8421-2028f2fde35b" width="400" />
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2307a1c6-2802-40c3-8421-2028f2fde35b" width="400" />
+</p>
 
 ## Unfolding PS-ADMM → A Smarter, Trainable Detector
 
@@ -101,7 +108,10 @@ Decoder → Extrinsic LLR → Detector
 
 ## BER vs SNR for all detectors
 
-![Unfolded BER curves](https://github.com/user-attachments/assets/54edfa1c-326f-4af8-b8fc-c2bcc993309d)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/54edfa1c-326f-4af8-b8fc-c2bcc993309d" width="400" />
+</p>
+
 
 
 We teach classical ADMM and PS-ADMM how to learn like a neural network while keeping their mathematical structure — resulting in a fast, stable, accurate MIMO detector that outperforms both optimization and deep learning alone.
