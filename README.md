@@ -14,6 +14,7 @@ y = noisy received signal
 Our job is to recover x from y with near-ML accuracy but without ML-level complexity. That’s where this project comes in.
 
 Some Classical detectors and why they fail:
+
 **MMSE**
 * Fast, but basically guesses.
 * Fails badly in overloaded or high-interference MIMO.
@@ -35,6 +36,7 @@ So here comes Deep Unfolding in the picture
 Instead of using a giant black-box neural network (which is overkill), we take a strong algorithm (ADMM/PS-ADMM) and unwrap its iterations into layers of a neural network.
 
 Each ADMM iteration → 1 neural network layer
+
 Each layer gets learnable parameters:
 * penalty weights ρₗ
 * projection smoothness
@@ -43,8 +45,10 @@ Each layer gets learnable parameters:
 Everything remains structured. Everything becomes trainable. And it just works.
 
 ## PS-ADMM
+
 We use a Bit-Plane Trick for QAM Optimization
 QAM points like {±1, ±3} are discrete.
+
 Discrete + optimization = pain.
 
 So, we break each symbol into bit-plane components:
@@ -68,7 +72,7 @@ Higher bit-planes (MSB) get bigger denominators → move more carefully.
 Lower bit-planes (LSB) move faster.
 
 This multi-resolution structure makes the updates extremely effective for discrete QAM optimization.
-![Unfolded PS-ADMM Detector eps_page-0001](https://github.com/user-attachments/assets/2307a1c6-2802-40c3-8421-2028f2fde35b)
+<img src="https://github.com/user-attachments/assets/2307a1c6-2802-40c3-8421-2028f2fde35b" width="400" />
 
 
 ## Unfolding PS-ADMM → A Smarter, Trainable Detector
@@ -95,15 +99,10 @@ Decoder → Extrinsic LLR → Detector
 (repeat)
 
 
-✔ Outputs (Included)
+## BER vs SNR for all detectors
 
-BER vs SNR for all detectors
+![Unfolded BER curves](https://github.com/user-attachments/assets/54edfa1c-326f-4af8-b8fc-c2bcc993309d)
 
-Convergence behavior
-
-Learned parameter trajectories
-
-Visual comparison of classical vs unfolded detectors
 
 We teach classical ADMM and PS-ADMM how to learn like a neural network while keeping their mathematical structure — resulting in a fast, stable, accurate MIMO detector that outperforms both optimization and deep learning alone.
 
@@ -111,4 +110,3 @@ So this project is interpretable, scalable, generalizes well, merges optimizatio
 
 It’s far simpler than black-box neural MIMO detectors
 
-This is modern “model-driven deep learning” in action.
