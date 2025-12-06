@@ -1,5 +1,5 @@
 # Deep Unfolding of Generalized ADMM for Neural-Networks
-Because classical algorithms are smart… but making them learn? That’s genius.”
+Because classical algorithms are smart; but making them learn? That’s smarter.
 
 Modern wireless systems (5G, Wi-Fi 7, Massive MIMO, etc.) transmit data using dozens of antennas simultaneously.
 
